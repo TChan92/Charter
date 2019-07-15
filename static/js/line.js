@@ -101,7 +101,7 @@ function plotly_line(data) {
         if (layout.hasOwnProperty('yaxis')) {
             layout.yaxis.title = {
                 text:'yaxis'
-            }
+            };
         } else {
             layout.yaxis = {
                 title: {
