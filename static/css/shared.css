@@ -1,0 +1,20 @@
+.banner {
+    background: red;
+    text-align: center;
+    color: white;
+}
+
+.sidebar {
+    bottom: 0;
+    position: fixed !important;
+    width: auto !important;
+    z-index:1;
+    left: 0;
+    top: 0;
+    padding-top: 50px;
+}
+
+.main {
+    margin-left: 150px;
+    padding: 0 0 0 ;
+}

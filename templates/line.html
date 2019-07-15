@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block header %}
+    {% load static %}
+
+    <title>Line Charts</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.2/c3.min.css" rel="stylesheet" type="text/css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.2/c3.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-1.48.3.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+
+    <script src="{% static "js/line.js" %}"></script>
+
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-1">Line Charts</h1>
+    <br/>
+
+    <form id="parameters">
+        Number of lines:
+        <input type="number" id="num_lines" value="2"><br/>
+        Number of points per line:
+        <input type="number" id="num_points" value="5"><br/>
+        <input type="button" value="Submit" onclick="activate_graph()">
+    </form>
+    <br/>
+
+    Charting library specific options can be found in the tabs.<br/>
+    Default options reflect the minimal configuration options specified. <br/>
+    The options do <b>not</b> reflect all the changes that can be specified, just some of the most common ones.<br/>
+    The chart must be refreshed to reflect the changes. <br/>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Plotly.js</a></li>
+            <li><a href="#tabs-2">CanvasJS</a></li>
+            <li><a href="#tabs-3">C3js</a></li>
+        </ul>
+        <div id="tabs-1">
+            <div id="plotly_chart"></div>
+        </div>
+
+        <div id="tabs-2">
+            <div id="canvas_chart"></div>
+        </div>
+
+        <div id="tabs-3">
+            <form id="c3_options">
+                Title:
+                <input type="checkbox" id="c3_title" value="c3_title">
+                <br/>
+                Zoom:
+                <label class="radio-inline"><input type="radio" name="c3_zoom" value="none" checked>None</label>
+                <label class="radio-inline"><input type="radio" name="c3_zoom" value="drag">Drag</label>
+                <label class="radio-inline"><input type="radio" name="c3_zoom" value="scroll">Scroll</label>
+                <br/>
+                Xaxis:
+                <input type="checkbox" id="c3_xaxis" value="c3_xaxis">
+                <br/>
+                Yaxis:
+                <input type="checkbox" id="c3_yaxis" value="c3_yaxis">
+                <br/>
+                <input type="button" value="Refresh" onclick="activate_graph()">
+            </form>
+            <div id="c3js_chart"></div>
+
+            <div class="form-group">
+                <label for="comment">C3js object Code:</label>
+                <textarea class="form-control" rows="5" id="c3_source"></textarea>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
