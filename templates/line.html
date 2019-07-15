@@ -33,6 +33,7 @@
     </form>
     <br/>
 
+    Currently the charts all use random data. This will probably change later.<br/>
     Charting library specific options can be found in the tabs.<br/>
     Default options reflect the minimal configuration options specified. <br/>
     The options do <b>not</b> reflect all the changes that can be specified, just some of the most common ones.<br/>
@@ -45,10 +46,40 @@
             <li><a href="#tabs-3">C3js</a></li>
         </ul>
         <div id="tabs-1">
+            <form id="plotly_options">
+                Title:
+                <input type="checkbox" id="plotly_title" value="plotly_title">
+                <br/>
+                Zoom:
+                <label class="radio-inline"><input type="radio" name="plotly_zoom" value="xy" checked>X&Y</label>
+                <label class="radio-inline"><input type="radio" name="plotly_zoom" value="x">X</label>
+                <label class="radio-inline"><input type="radio" name="plotly_zoom" value="y">Y</label>
+                <label class="radio-inline"><input type="radio" name="plotly_zoom" value="disabled">disabled</label>
+                <br/>
+                Xaxis label:
+                <input type="checkbox" id="plotly_xaxis" value="plotly_xaxis">
+                <br/>
+                Yaxis label:
+                <input type="checkbox" id="plotly_yaxis" value="plotly_yaxis">
+                <br/>
+                <input type="button" value="Refresh" onclick="activate_graph()">
+
+            </form>
             <div id="plotly_chart"></div>
+
+            <div class="form-group">
+                <label for="comment">Plotly Data:</label>
+                <textarea class="form-control" rows="10" id="plotly_data"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Plotly Layout Code:</label>
+                <textarea class="form-control" rows="10" id="plotly_layout"></textarea>
+            </div>
         </div>
 
         <div id="tabs-2">
+            Chart specific options coming soon
             <div id="canvas_chart"></div>
         </div>
 
@@ -62,10 +93,10 @@
                 <label class="radio-inline"><input type="radio" name="c3_zoom" value="drag">Drag</label>
                 <label class="radio-inline"><input type="radio" name="c3_zoom" value="scroll">Scroll</label>
                 <br/>
-                Xaxis:
+                Xaxis label:
                 <input type="checkbox" id="c3_xaxis" value="c3_xaxis">
                 <br/>
-                Yaxis:
+                Yaxis label:
                 <input type="checkbox" id="c3_yaxis" value="c3_yaxis">
                 <br/>
                 <input type="button" value="Refresh" onclick="activate_graph()">
@@ -74,7 +105,7 @@
 
             <div class="form-group">
                 <label for="comment">C3js object Code:</label>
-                <textarea class="form-control" rows="5" id="c3_source"></textarea>
+                <textarea class="form-control" rows="10" id="c3_source"></textarea>
             </div>
         </div>
     </div>

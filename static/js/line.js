@@ -49,11 +49,72 @@ function plotly_line(data) {
 
     });
 
-    let layout = {
-        title: 'Plotly.js'
-    };
+    let layout = {};
+
+    // Title
+    if ($('#plotly_title').prop('checked')) {
+        layout.title = 'Plotly.js';
+    }
+
+    // Enabled
+    let scroll = $('input:radio[name=plotly_zoom]:checked').val();
+
+    // Zoom options
+    if (scroll === 'y') {
+        layout.xaxis = {
+            fixedrange: true
+        };
+    } else if (scroll === 'x') {
+        layout.yaxis = {
+            fixedrange: true
+        };
+    } else if (scroll === 'y') {
+        layout.xaxis = {
+            fixedrange: true
+        };
+    } else if (scroll === 'disabled') {
+        layout.yaxis = {
+            fixedrange: true
+        };
+        layout.xaxis = {
+            fixedrange: true
+        };
+    }
+
+    // If I wanted neater code I would initialize xaxis as blank so I wouldn't have to check for it.
+    // But I want to the displayed code to be as minimal as possible
+    if ($("#plotly_xaxis").prop('checked')) {
+        if (layout.hasOwnProperty('xaxis')) {
+            layout.xaxis.title = {
+                text:'xaxis'
+            }
+        } else {
+            layout.xaxis = {
+                title: {
+                    text: 'xaxis'
+                }
+            };
+        }
+    }
+    
+    if ($("#plotly_yaxis").prop('checked')) {
+        if (layout.hasOwnProperty('yaxis')) {
+            layout.yaxis.title = {
+                text:'yaxis'
+            }
+        } else {
+            layout.yaxis = {
+                title: {
+                    text: 'yaxis'
+                }
+            };
+        }
+    }
+    $('#plotly_data').val(JSON.stringify(traces, undefined, 2));
+    $('#plotly_layout').val(JSON.stringify(layout, undefined, 2));
 
     Plotly.newPlot('plotly_chart', traces, layout);
+
 }
 
 function c3_line(data) {
