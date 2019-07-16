@@ -11,8 +11,6 @@
 
     <script src="https://cdn.plot.ly/plotly-1.48.3.min.js"></script>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
 
@@ -23,21 +21,30 @@
 {% block content %}
     <h1 class="display-1">Line Charts</h1>
     <br/>
-
-    <form id="parameters">
-        Number of lines:
-        <input type="number" id="num_lines" value="2"><br/>
-        Number of points per line:
-        <input type="number" id="num_points" value="5"><br/>
-        <input type="button" value="Submit" onclick="activate_graph()">
-    </form>
+    <div class="card" style="width: 19rem">
+        <div class="card-body">
+            <form id="parameters">
+                Number of lines:
+                <input type="number" id="num_lines" value="2" style="width: 5rem; position: absolute; right: 0px;"><br/>
+                Number of points per line:
+                <input type="number" id="num_points" value="5" style="width: 5rem; position: absolute; right: 0px;"><br/>
+                <br/>
+                <a class="btn btn-primary" onclick="activate_graph()" style="font-size: 12px;">Submit</a>
+            </form>
+        </div>
+    </div>
     <br/>
 
-    Currently the charts all use random data. This will probably change later.<br/>
-    Charting library specific options can be found in the tabs.<br/>
-    Default options reflect the minimal configuration options specified. <br/>
-    The options do <b>not</b> reflect all the changes that can be specified, just some of the most common ones.<br/>
-    The chart must be refreshed to reflect the changes. <br/>
+    <div class="card" style="width: 50rem">
+        <div class="card-body">
+            Currently the charts all use random data. This will probably change later.<br/>
+            Charting library specific options can be found in the tabs.<br/>
+            Default options reflect the minimal configuration options specified. <br/>
+            The options do <b>not</b> reflect all the changes that can be specified, just some of the most common
+            ones.<br/>
+            The chart must be refreshed to reflect the changes. <br/>
+        </div>
+    </div>
 
     <div id="tabs">
         <ul>
@@ -50,7 +57,7 @@
                 Title:
                 <input type="checkbox" id="plotly_title" value="plotly_title">
                 <br/>
-                Zoom:
+                Click & Drag Zoom:
                 <label class="radio-inline"><input type="radio" name="plotly_zoom" value="xy" checked>X&Y</label>
                 <label class="radio-inline"><input type="radio" name="plotly_zoom" value="x">X</label>
                 <label class="radio-inline"><input type="radio" name="plotly_zoom" value="y">Y</label>
