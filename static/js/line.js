@@ -87,7 +87,7 @@ function plotly_line(data) {
         if (layout.hasOwnProperty('xaxis')) {
             layout.xaxis.title = {
                 text:'xaxis'
-            }
+            };
         } else {
             layout.xaxis = {
                 title: {
@@ -121,7 +121,7 @@ function c3_line(data) {
     let lines = [];
 
     data.forEach(function (line, index) {
-        lines.push([`line${index}`].concat(line))
+        lines.push([`line${index}`].concat(line));
     });
 
     let chart_data = {
@@ -190,17 +190,25 @@ function canvas_line(data) {
         let l = {
             type: "line",
             dataPoints: line.map(function (y) {
-                return {y: y}
+                return {y: y};
             })
         };
         lines.push(l);
     });
 
-    var chart = new CanvasJS.Chart("canvas_chart", {
-        title: {
-            text: "CanvasJS"
-        },
+    let chart_data = {
         data: lines
-    });
+    };
+
+    // Title
+    if ($('#canvas_title').prop('checked')) {
+        chart_data.title = {
+            text: 'CanvasJS'
+        };
+    }
+
+    $('#canvas_source').val(JSON.stringify(chart_data, undefined, 2));
+
+    var chart = new CanvasJS.Chart("canvas_chart", chart_data);
     chart.render();
 }

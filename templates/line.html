@@ -92,8 +92,25 @@
         </div>
 
         <div id="tabs-2">
-            Chart specific options coming soon
+            <div class="card" style="width: 17rem">
+                <div class="card-body">
+                    <form id="canvas_options">
+                        Title:
+                        <input type="checkbox" id="canvas_title" value="canvas_title">
+                        <br/>
+                        More Options Coming Soon
+                        <br/>
+                        <input type="button" value="Refresh" onclick="activate_graph()">
+                    </form>
+                </div>
+            </div>
+
             <div id="canvas_chart"></div>
+
+            <div class="form-group">
+                <label for="comment">CanvasJS object Code:</label>
+                <textarea class="form-control" rows="10" id="canvas_source"></textarea>
+            </div>
         </div>
 
         <div id="tabs-3">
