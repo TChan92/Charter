@@ -207,6 +207,25 @@ function canvas_line(data) {
         };
     }
 
+    // Xaxis
+    if ($('#canvas_xaxis').prop('checked')) {
+        chart_data.axisX = {
+            title: 'X Axis'
+        };
+    }
+
+    // Yaxis
+    if ($('#canvas_yaxis').prop('checked')) {
+        chart_data.axisY = {
+            title: 'Y Axis'
+        };
+    }
+
+    // Zoom
+    if ($('#canvas_zoom').prop('checked')) {
+        chart_data.zoomEnabled = true;
+    }
+
     $('#canvas_source').val(JSON.stringify(chart_data, undefined, 2));
 
     var chart = new CanvasJS.Chart("canvas_chart", chart_data);
