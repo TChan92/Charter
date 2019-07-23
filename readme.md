@@ -9,7 +9,18 @@ If you want to run the code yourself:
 1. Clone the repository and cd into it
 2. Create virtualenv (optional)
 3. pip install -r requirements.txt
-4. python manage.py runserver
+4. The following environment variables must be set:
+  * DJANGO_SETTINGS_MODULE=Charter.settings
+  * SECRET_KEY
+  * The following 5 are all relating to Postgres
+  * DB_NAME
+  * USERNAME
+  * PASSWORD
+  * HOSTNAME
+  * PORT
+5. Install Postgres
+6. Install Memcached
+7. python manage.py runserver
 
 Roadmap:
 * Host on S3 bucket

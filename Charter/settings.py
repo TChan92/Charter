@@ -31,6 +31,19 @@ if EB:
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+if EB:
+    # TODO
+    memcached_host = ''
+else:
+    memcached_host = '127.0.0.1:11211'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': memcached_host,
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [
