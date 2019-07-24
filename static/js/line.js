@@ -18,6 +18,7 @@ $(function () {
     });
 
     activate_graph();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 function generate_data(num, lines) {
