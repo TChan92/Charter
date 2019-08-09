@@ -21,22 +21,21 @@
 {% block content %}
     <h1 class="display-1">Line Charts</h1>
     <br/>
-    <div class="card" style="width: 19rem">
+    <div class="card general_form">
         <div class="card-body">
             <form id="parameters">
                 Number of lines:
-                <input type="number" id="num_lines" value="2" style="width: 5rem; position: absolute; right: 0px;"><br/>
+                <input type="number" id="num_lines" value="2" class="small_num_input"><br/>
                 Number of points per line:
-                <input type="number" id="num_points" value="5"
-                       style="width: 5rem; position: absolute; right: 0px;"><br/>
+                <input type="number" id="num_points" value="5" class="small_num_input"><br/>
                 <br/>
-                <a class="btn btn-primary" onclick="activate_graph()" style="font-size: 12px;">Submit</a>
+                <a class="btn btn-primary" onclick="activate_graph()" >Submit</a>
             </form>
         </div>
     </div>
     <br/>
 
-    <div class="card" style="width: 50rem">
+    <div class="card">
         <div class="card-body">
             Currently the charts all use random data. This will probably change later.<br/>
             Default options reflect the minimal configuration options specified. <br/>
@@ -53,7 +52,7 @@
             <li><a href="#tabs-3">C3js</a></li>
         </ul>
         <div id="tabs-1">
-            <div class="card" style="width: 25rem">
+            <div class="card">
                 <div class="card-body">
                     <form id="plotly_options">
                         Title:
@@ -92,7 +91,7 @@
         </div>
 
         <div id="tabs-2">
-            <div class="card" style="width: 22rem">
+            <div class="card">
                 <div class="card-body">
                     <form id="canvas_options">
                         Title:

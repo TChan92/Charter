@@ -23,3 +23,18 @@
     height:50px;
     width:115px;
 }
+
+.general_form {
+    width: 20rem;
+    padding-right: 50px;
+}
+
+.small_num_input {
+    width: 5rem;
+    position: absolute;
+    right: 25px;
+}
+
+card {
+    width: 50rem;
+}
