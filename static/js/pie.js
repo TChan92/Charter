@@ -27,13 +27,6 @@ function generate_data(num) {
     for (let i = 0; i < num; i++) {
         data.push(Math.floor(Math.random() * 100));
     }
-    // for (let j = 0; j < lines; j++) {
-    //     let line = [];
-    //     for (let i = 0; i < num; i++) {
-    //         line.push(Math.floor((Math.random() * 100)));
-    //     }
-    //     data.push(line);
-    // }
 
     return data;
 }
@@ -50,7 +43,7 @@ function plotly_pie(data) {
         data.forEach(function (num, i) {
             labels[i] = `label${i}`;
         });
-        pie.labels = labels;
+        pie[0].labels = labels;
     }
 
     let layout = {};
@@ -91,6 +84,8 @@ function c3_pie(data) {
     }
 
     c3.generate(chart_data);
+
+    $('#c3_source').val(JSON.stringify(chart_data, undefined, 2));
 }
 
 function canvas_pie(data) {
@@ -115,9 +110,21 @@ function canvas_pie(data) {
             text: 'CanvasJS'
         };
     }
+    $('#canvas_source').val(JSON.stringify(chart_data, undefined, 2));
 
     var chart = new CanvasJS.Chart("canvas_chart", chart_data);
-
     chart.render();
 
+    // Without this, the chart seems to float outside the container and ontop of the object code.
+    $('.canvasjs-chart-canvas').css(
+        {
+            position: 'relative',
+            height: '500px'
+        }
+    );
+    $('.canvasjs-chart-container').css(
+        {
+            height: '500px'
+        }
+    );
 }

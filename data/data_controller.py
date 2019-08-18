@@ -23,13 +23,16 @@ def get_diameters_for_date(date, max=True, unit='meters'):
     return [x['estimated_diameter'][unit][value] for x in date]
 
 
-def get_neo_max_estimated_diameter(data, max=True, unit='meters'):
+def get_neo_estimated_diameter(data, max=True, unit='meters'):
     """
     Gets the max estimated diameter of neo objects in the last week
+    :param data: dict, result of get_nasa_neo
+    :param max: bool, max if true, min if false
+    :param, unit: str, kilometers, meters, miles, feet
     :return: dict of list: {date:[diam1, diam2,...],...}
     """
     max_estimated_diameter = {}
-    for k,v in data.items():
+    for k, v in data.items():
         max_estimated_diameter[k] = get_diameters_for_date(v, max, unit)
 
     return max_estimated_diameter
@@ -56,10 +59,12 @@ def get_nasa_neo():
         data = data['near_earth_objects']
         seralized_data = json.dumps(data)
         cache.set(cache_key, seralized_data)
+    else:
+        data = json.loads(data)
     return data
 
 
 if __name__ == '__main__':
     data = get_nasa_neo()
     data = json.loads(data)
-    print(get_neo_max_estimated_diameter(data))
+    print(get_neo_estimated_diameter(data))

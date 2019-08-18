@@ -1,6 +1,9 @@
+from datetime import datetime
+
+from django.core.cache import cache
 from django.test import TestCase
 
-from Charter.data_controller import get_neo_max_estimated_diameter
+from data.data_controller import get_neo_estimated_diameter
 
 
 class TestDataController(TestCase):
@@ -109,13 +112,18 @@ class TestDataController(TestCase):
                 },
             ]
         }
+        cache.delete(datetime.now().strftime('%Y-%m-%d'))
 
     def test_get_neo_max_estimated_diameter_default_params(self):
-        data = get_neo_max_estimated_diameter(self.data)
-        print(data)
+        data = get_neo_estimated_diameter(self.data)
 
         assert isinstance(data, dict)
         assert len(data.keys()) == 1
         assert data == {'2019-01-01': [1.2, 11.2]}
 
-    #TODO add more tests
+    def test_get_neo_min_estimated_diameter_default_params(self):
+        data = get_neo_estimated_diameter(self.data, max=False)
+
+        assert isinstance(data, dict)
+        assert len(data.keys()) == 1
+        assert data == {'2019-01-01': [0.2, 10.2]}

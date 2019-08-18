@@ -33,7 +33,7 @@ else:
 
 if EB:
     # TODO
-    memcached_host = ''
+    memcached_host = 'charter-memcached.cgdpbg.cfg.usw2.cache.amazonaws.com:11211'
 else:
     memcached_host = '127.0.0.1:11211'
 
@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'data',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +113,12 @@ else:
             'PORT': os.environ['PORT']
         }
     }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'  # Because I don't have any sensitive information on here
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

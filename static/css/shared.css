@@ -38,3 +38,12 @@
 card {
     width: 50rem;
 }
+
+#canvas_chart {
+    display: block;
+    height: 500px;
+}
+
+#tabs-2 .form-group {
+    display: block;
+}

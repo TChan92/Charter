@@ -21,5 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('line', line, name='line'),
-    path('about', about, name='about')
+    path('pie', pie, name='pie'),
+    path('about', about, name='about'),
+    path('api/v1/nasaneo/', NasaNeoList.as_view(), name='neo'),
+    path('api/v1/neo_estimated_diameter/', NasaNeoAverageDiameter.as_view(), name='neo_estimated_diameter')
 ]

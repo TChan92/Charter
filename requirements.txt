@@ -1,7 +1,11 @@
 certifi==2019.6.16
 chardet==3.0.4
-Django==2.2.3
+coverage==4.5.4
+Django==2.2.4
+django-filter==2.2.0
+djangorestframework==3.10.1
 idna==2.8
+Markdown==3.1.1
 psycopg2==2.8.3
 psycopg2-binary==2.8.3
 python-memcached==1.59
